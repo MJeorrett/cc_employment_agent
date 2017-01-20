@@ -6,6 +6,7 @@ import Main from './Main'
 import WelcomeContainer from './WelcomeContainer'
 import EmployersContainer from './EmployersContainer'
 import JobsContainer from './JobsContainer'
+import StudentsContainer from './StudentsContainer'
 
 window.onload = function(){
   ReactDOM.render(
@@ -15,6 +16,7 @@ window.onload = function(){
           <IndexRoute component={ WelcomeContainer } />
           <Route path="employers" component={ EmployersContainer } />
           <Route path="jobs" component={ JobsContainer } />
+          <Route path="students" component={ StudentsContainer } />
         </Route>
       </Router>
     </div>,

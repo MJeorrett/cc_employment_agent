@@ -30,6 +30,7 @@ class Main extends React.Component {
             <div className="nav-padding"></div>
             <Link to="/employers">Employers</Link>
             <Link to="/jobs">Jobs</Link>
+            <Link to="/students">Students</Link>
             <span id="user-name">{ this.state.currentUser }</span>
           </nav>
           <div id="content-container">
