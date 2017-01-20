@@ -25,10 +25,15 @@ class Main extends React.Component {
     if ( this.state.currentUser ) {
       content = (
         <div>
-          <span>CodeClan Employment Agent</span>
-          <Link to="/employers">Employers</Link>
-          <span>{ this.state.currentUser }</span>
-          {this.props.children }
+          <nav>
+            <span className="logo">CC Employment Agent</span>
+            <div className="nav-padding"></div>
+            <Link to="/employers">Employers</Link>
+            <span className="user-name">{ this.state.currentUser }</span>
+          </nav>
+          <div id="content-container">
+            {this.props.children }
+          </div>
         </div>
       )
     }
@@ -37,7 +42,7 @@ class Main extends React.Component {
     }
 
     return (
-      <div>
+      <div >
         { content }
       </div>
     )

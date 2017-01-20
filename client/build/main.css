@@ -1,0 +1,40 @@
+* {
+  color: dodgerblue;
+}
+
+nav {
+  box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.15);
+  display: flex;
+  font-size: 30px;
+  padding: 5px 15px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: calc(100% - 30px);
+}
+
+.nav-padding {
+  flex-grow: 1;
+}
+
+nav span {
+  padding-top: 13px;
+}
+
+#content-container {
+  padding: 71px 15px 15px 15px;
+}
+
+a, button {
+  text-decoration: none;
+  padding: 5px;
+  background-color: white;
+  border: 3px solid dodgerblue;
+  border-radius: 5px;
+  margin: 5px 15px;
+}
+
+a:hover, button:hover {
+  cursor: pointer;
+  background-color: lightblue;
+}
