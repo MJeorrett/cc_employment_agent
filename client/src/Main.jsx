@@ -29,7 +29,8 @@ class Main extends React.Component {
             <span className="logo">CC Employment Agent</span>
             <div className="nav-padding"></div>
             <Link to="/employers">Employers</Link>
-            <span className="user-name">{ this.state.currentUser }</span>
+            <Link to="/jobs">Jobs</Link>
+            <span id="user-name">{ this.state.currentUser }</span>
           </nav>
           <div id="content-container">
             {this.props.children }

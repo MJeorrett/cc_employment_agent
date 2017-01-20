@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import Main from './Main'
 import WelcomeContainer from './WelcomeContainer'
 import EmployersContainer from './EmployersContainer'
+import JobsContainer from './JobsContainer'
 
 window.onload = function(){
   ReactDOM.render(
@@ -13,6 +14,7 @@ window.onload = function(){
         <Route path="/" component={ Main }>
           <IndexRoute component={ WelcomeContainer } />
           <Route path="employers" component={ EmployersContainer } />
+          <Route path="jobs" component={ JobsContainer } />
         </Route>
       </Router>
     </div>,
