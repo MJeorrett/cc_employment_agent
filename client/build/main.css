@@ -88,4 +88,5 @@ a:hover, button:hover {
   border: 5px solid dodgerblue;
   border-radius: 10px;
   background-color: white;
+  box-shadow: 10px 10px 5px 0px rgba(5, 50, 50, 0.35);
 }
