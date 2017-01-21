@@ -1,5 +1,7 @@
 import React from 'react'
 
+import TableRow from '../components/TableRow'
+
 class Table extends React.Component {
 
   render() {
@@ -15,10 +17,7 @@ class Table extends React.Component {
       return <th key={ index }>{ dataTitle }</th>
     })
     const tableRows = this.props.data.map( (dataRow, index) => {
-      const cells = dataKeys.map( (dataKey, index) => {
-        return <td key={ index }>{ dataRow[dataKey] }</td>
-      })
-      return <tr key={ index }>{ cells }</tr>
+      return <TableRow key={ index } data={ dataRow } dataKeys={ dataKeys } />
     })
 
     return (
