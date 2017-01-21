@@ -58,7 +58,9 @@ class EmployersContainer extends React.Component {
     let modal = ""
     if ( this.state.selectedEmployer ) {
       modal = (
-        <ModalDialog onCloseClicked={ this.clearSelectedEmployer }>
+        <ModalDialog
+          title={ this.state.selectedEmployer.company_name }
+          onCloseClicked={ this.clearSelectedEmployer }>
           <EmployerPreviewDetails employerData={ this.state.selectedEmployer } />
         </ModalDialog>
       )

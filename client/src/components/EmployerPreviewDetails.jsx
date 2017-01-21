@@ -6,9 +6,12 @@ class EmployerPreviewDetails extends React.Component {
     const employerData = this.props.employerData
     return(
       <div>
-        <p>{ employerData.company_name }</p>
-        <a href={ employerData.company_website }>Website</a>
-        <p>Contact Details: { employerData.contact_details }</p>
+        <p><b>Contact Details:</b> { employerData.contact_details }</p>
+        <p><b>Type:</b> { employerData.type }</p>
+        <p><b>Website:</b> <a href={ employerData.company_website }>{ employerData.company_website }</a></p>
+        <p><b>Address:</b> { employerData.address }</p>
+        <p><b>Number of Students Hired:</b> { employerData.no_previous_students_hired }</p>
+        <p><b>Notes:</b> { employerData.notes }</p>
       </div>
     )
   }
