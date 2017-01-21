@@ -9,7 +9,7 @@ class Main extends React.Component {
   constructor() {
     super()
     this.state = {
-      currentUser: "Matthew"
+      currentUser: null
     }
     this.setCurrentUser = this.setCurrentUser.bind( this )
   }
@@ -32,7 +32,7 @@ class Main extends React.Component {
             <Link className="button" activeClassName="active-link" to="/employers">Employers</Link>
             <Link className="button" activeClassName="active-link" to="/jobs">Jobs</Link>
             <Link className="button" activeClassName="active-link" to="/students">Students</Link>
-            <span id="user-name">{ this.state.currentUser }</span>
+            <span id="user-name">{ this.state.currentUser.email }</span>
             <LogOutButton onLogOut={ this.setCurrentUser } />
           </nav>
           <div id="content-container">
@@ -42,8 +42,10 @@ class Main extends React.Component {
       )
     }
     else {
-      content = <LoginContainer onLogIn={ this.setCurrentUser } />
+      content = <LoginContainer baseUrl="http://localhost:5000/" onLogin={ this.setCurrentUser } />
     }
+
+    console.log("content:", content);
 
     return (
       <div >

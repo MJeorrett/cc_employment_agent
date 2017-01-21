@@ -1,4 +1,5 @@
 import React from 'react'
+import XmlHttpHelper from '../helpers/XmlHttpHelper'
 
 class LoginContainer extends React.Component {
 
@@ -26,7 +27,17 @@ class LoginContainer extends React.Component {
   }
 
   handleLogInClicked() {
-    this.props.onLogIn( this.state.email )
+    const url = this.props.baseUrl + 'users/sign_in.json'
+    const payload = {
+      user: {
+        email: this.state.email,
+        password: this.state.password
+      }
+    }
+    XmlHttpHelper.post( url, payload, ( user ) => {
+      console.log( "props:", this.props )
+      this.props.onLogin( user )
+    }, true )
   }
 
   render() {
