@@ -2,15 +2,27 @@ import React from 'react'
 
 class ModalDialog extends React.Component {
 
+  constructor() {
+    super()
+    this.handleCloseClicked = this.handleCloseClicked.bind( this )
+  }
+
+  handleCloseClicked() {
+    this.props.onCloseClicked()
+  }
+
   render() {
     return (
       <div id="modal-dialog">
         <div id="modal-dialogue-title-bar">
           <h2>Modal Dialog Title</h2>
-          <span id="modal-dialog-close-button">X</span>
-          <div id="modal-dialog-content">
-            { this.props.children }
-          </div>
+          <span
+            id="modal-dialog-close-button"
+            onClick={ this.handleCloseClicked }
+          >X</span>
+        </div>
+        <div id="modal-dialog-content">
+          { this.props.children }
         </div>
       </div>
     )

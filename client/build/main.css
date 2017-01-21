@@ -21,7 +21,7 @@ nav span {
   padding-top: 15px;
 }
 
-a, button {
+.button, button {
   text-decoration: none;
   padding: 5px;
   background-color: white;
@@ -31,11 +31,11 @@ a, button {
   font-size: 20px;
 }
 
-a {
+.button {
   padding-top: 8px;
 }
 
-a:hover, button:hover, #modal-dialog-close-button:hover {
+.button:hover, button:hover, #modal-dialog-close-button:hover {
   cursor: pointer;
   background-color: lightblue;
 }
@@ -82,7 +82,6 @@ a:hover, button:hover, #modal-dialog-close-button:hover {
 #modal-dialog {
   position: fixed;
   width: calc(100vw - 350px);
-  height: calc(100vh - 300px);
   z-index: 1;
   margin: 100px 175px;
   border: 5px solid dodgerblue;

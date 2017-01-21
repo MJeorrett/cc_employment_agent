@@ -2,7 +2,7 @@ const employers_data = [
   {
     id: 1,
     company_name: "FreeAgent",
-    company_website: "www.freeagent.com",
+    company_website: "http://www.freeagent.com",
     contact_details: "David Jones, 077044999333",
     company_logo_url: "https://www.freeagent.com/components/images/company/branding/freeagent-logo-7c2816e6.png",
     type: "product",
