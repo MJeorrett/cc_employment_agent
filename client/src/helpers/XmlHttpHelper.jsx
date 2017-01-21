@@ -1,12 +1,14 @@
 const XmlHttpHelper = {
 
-  get( url, onloadCallback ) {
+  get( url, onloadCallback, withCredentials ) {
     var req = new XMLHttpRequest()
     req.open( 'GET', url )
+    req.setRequestHeader( 'Content-Type', 'application/json' )
+    if ( withCredentials ) req.withCredentials = true
     req.onload = () => {
       const dataObject = JSON.parse( req.responseText )
       if( req.status === 200 ) {
-        onloadCallback( dataObject )
+        onloadCallback( dataObject, req.status )
       } else {
         console.log( "Error GET from:", url, ", failed with status: ", req.status, "/n", dataObject );
       }

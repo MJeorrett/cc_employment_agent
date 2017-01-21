@@ -3,15 +3,28 @@ import { Link } from 'react-router'
 
 import LoginContainer from './containers/LoginContainer'
 import LogOutButton from './components/LogOutButton'
+import XmlHttpHelper from './helpers/XmlHttpHelper'
 
 class Main extends React.Component {
 
   constructor() {
     super()
     this.state = {
-      currentUser: null
+      currentUser: null,
+      baseUrl: "http://localhost:5000/"
     }
     this.setCurrentUser = this.setCurrentUser.bind( this )
+  }
+
+  componentDidMount() {
+    const url = this.state.baseUrl + 'users.json'
+    XmlHttpHelper.get( url, (user, status) => {
+      if ( status === 200 ) {
+        this.setCurrentUser( user )
+      } else {
+        this.setCurrentUser( null )
+      }
+    }, true )
   }
 
   setCurrentUser( user ) {
@@ -42,10 +55,8 @@ class Main extends React.Component {
       )
     }
     else {
-      content = <LoginContainer baseUrl="http://localhost:5000/" onLogin={ this.setCurrentUser } />
+      content = <LoginContainer baseUrl={ this.state.baseUrl } onLogin={ this.setCurrentUser } />
     }
-
-    console.log("content:", content);
 
     return (
       <div >
