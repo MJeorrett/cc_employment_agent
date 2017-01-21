@@ -12,8 +12,9 @@ class EmployerLink extends React.Component {
   }
 
   render() {
+    const data = this.props.employer_data
     const style = {
-      backgroundImage: `url(${this.props.employer_data.company_logo_url})`
+      backgroundImage: `url(${data.company_logo_url})`
     }
 
     return(
@@ -21,6 +22,7 @@ class EmployerLink extends React.Component {
         className="employer-link"
         style={ style }
         onClick={ this.handleClick }
+        title={ data.company_name }
       ></div>
     )
   }
