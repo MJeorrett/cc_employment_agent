@@ -13,7 +13,7 @@ class SignOutButton extends React.Component {
 
   render() {
     return (
-      <button onClick={ this.handleClick }>Log Out</button>
+      <button id="log-out-button" onClick={ this.handleClick }>Log Out</button>
     )
   }
 

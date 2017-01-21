@@ -47,3 +47,13 @@ a:hover, button:hover {
 #content-container {
   padding: 71px 15px 15px 15px;
 }
+
+#log-out-button {
+  font-size: 14px;
+  border: none;
+}
+
+#log-out-button:hover {
+  text-decoration: underline;
+  background-color: white;
+}

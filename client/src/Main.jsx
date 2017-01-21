@@ -9,7 +9,7 @@ class Main extends React.Component {
   constructor() {
     super()
     this.state = {
-      currentUser: null
+      currentUser: "Matthew"
     }
     this.setCurrentUser = this.setCurrentUser.bind( this )
   }
