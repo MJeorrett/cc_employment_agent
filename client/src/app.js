@@ -1,5 +1,5 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 
 import Main from './Main'
@@ -8,7 +8,7 @@ import EmployersContainer from './EmployersContainer'
 import JobsContainer from './JobsContainer'
 import StudentsContainer from './StudentsContainer'
 
-window.onload = function(){
+window.onload = () => {
   ReactDOM.render(
     <div>
       <Router history={ hashHistory }>
