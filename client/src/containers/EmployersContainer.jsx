@@ -2,6 +2,7 @@ import React from 'react'
 
 import employers_data from '../mock_data/employers_data'
 import EmployerLink from '../components/EmployerLink'
+import ModalDialog from './ModalDialog'
 
 class EmployersContainer extends React.Component {
 
@@ -29,6 +30,7 @@ class EmployersContainer extends React.Component {
     return (
       <div id="employers-container">
         { columns }
+        <ModalDialog />
       </div>
     )
   }
