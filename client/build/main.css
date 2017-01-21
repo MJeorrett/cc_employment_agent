@@ -40,6 +40,10 @@ a:hover, button:hover {
   background-color: lightblue;
 }
 
+.active-link {
+  background-color: lightblue;
+}
+
 #user-name {
   padding-left: 20px;
 }

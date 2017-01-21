@@ -29,9 +29,9 @@ class Main extends React.Component {
           <nav>
             <span className="logo">CC Employment Agent</span>
             <div className="nav-padding"></div>
-            <Link to="/employers">Employers</Link>
-            <Link to="/jobs">Jobs</Link>
-            <Link to="/students">Students</Link>
+            <Link activeClassName="active-link" to="/employers">Employers</Link>
+            <Link activeClassName="active-link" to="/jobs">Jobs</Link>
+            <Link activeClassName="active-link" to="/students">Students</Link>
             <span id="user-name">{ this.state.currentUser }</span>
             <LogOutButton onLogOut={ this.setCurrentUser } />
           </nav>
