@@ -2,13 +2,17 @@
   color: dodgerblue;
 }
 
+div, nav {
+  background-color: white;
+}
+
 h2 {
   font-size: 30px;
 }
 
 span, p {
   padding: 5px 0px;
-  color: #585858 !important
+  color: #585858
 }
 
 b {
@@ -32,6 +36,27 @@ nav {
 
 nav span {
   padding-top: 15px;
+}
+
+table {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+thead {
+  border-bottom: 2px solid dodgerblue;
+}
+
+th, td {
+  padding: 18px;
+}
+
+th {
+  font-size: 30px;
+}
+
+td {
+  color: #585858;
 }
 
 .button, button {

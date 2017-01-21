@@ -32,3 +32,5 @@ const jobs_data = [
     application_process: "CV and cover letters to Leigh-ann by Friday 13th"
   }
 ]
+
+export default jobs_data
