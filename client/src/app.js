@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 
 import Main from './Main'
-import WelcomeContainer from './WelcomeContainer'
-import EmployersContainer from './EmployersContainer'
-import JobsContainer from './JobsContainer'
-import StudentsContainer from './StudentsContainer'
+import WelcomeContainer from './containers/WelcomeContainer'
+import EmployersContainer from './containers/EmployersContainer'
+import JobsContainer from './containers/JobsContainer'
+import StudentsContainer from './containers/StudentsContainer'
 
 window.onload = () => {
   ReactDOM.render(

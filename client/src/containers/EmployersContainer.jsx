@@ -1,7 +1,7 @@
 import React from 'react'
 
-import employers_data from './mock_data/employers_data'
-import EmployerLink from './components/EmployerLink'
+import employers_data from '../mock_data/employers_data'
+import EmployerLink from '../components/EmployerLink'
 
 class EmployersContainer extends React.Component {
 

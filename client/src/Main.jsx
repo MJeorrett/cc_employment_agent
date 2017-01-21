@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import LoginContainer from './LoginContainer'
+import LoginContainer from './containers/LoginContainer'
 import LogOutButton from './components/LogOutButton'
 
 class Main extends React.Component {
