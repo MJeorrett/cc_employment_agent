@@ -1,19 +1,29 @@
 import React from 'react'
 
-import employers_data from '../mock_data/employers_data'
 import EmployerLink from '../components/EmployerLink'
 import ModalDialog from './ModalDialog'
 import EmployerPreviewDetails from '../components/EmployerPreviewDetails'
+import XmlHttpHelper from '../helpers/XmlHttpHelper'
 
 class EmployersContainer extends React.Component {
 
   constructor() {
     super()
     this.state = {
-      selectedEmployer: null
+      selectedEmployer: null,
+      employersData: []
     }
     this.handleEmployerSelected = this.handleEmployerSelected.bind( this )
     this.clearSelectedEmployer = this.clearSelectedEmployer.bind( this )
+  }
+
+  componentDidMount() {
+    const url = "http://localhost:5000/api/employers"
+    XmlHttpHelper.get( url, ( employers ) => {
+      this.setState({
+        employersData: employers
+      })
+    }, true)
   }
 
   handleEmployerSelected( employerData ) {
@@ -30,7 +40,7 @@ class EmployersContainer extends React.Component {
 
   render() {
 
-    const all_employer_links = employers_data.map( (employer_data, index) => {
+    const all_employer_links = this.state.employersData.map( (employer_data, index) => {
       return (
         <EmployerLink
           key={ index }
