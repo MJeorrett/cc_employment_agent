@@ -87,6 +87,11 @@ nav span {
   background-position: center;
 }
 
+.employer-link:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
 #modal-dialog {
   position: fixed;
   width: calc(100vw - 350px);
