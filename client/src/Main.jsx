@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 
 import LoginContainer from './LoginContainer'
+import LogOutButton from './components/LogOutButton'
 
 class Main extends React.Component {
 
@@ -32,6 +33,7 @@ class Main extends React.Component {
             <Link to="/jobs">Jobs</Link>
             <Link to="/students">Students</Link>
             <span id="user-name">{ this.state.currentUser }</span>
+            <LogOutButton onLogOut={ this.setCurrentUser } />
           </nav>
           <div id="content-container">
             {this.props.children }

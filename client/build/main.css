@@ -18,7 +18,7 @@ nav {
 }
 
 nav span {
-  padding-top: 13px;
+  padding-top: 15px;
 }
 
 a, button {
@@ -28,6 +28,11 @@ a, button {
   border: 3px solid dodgerblue;
   border-radius: 5px;
   margin: 5px;
+  font-size: 20px;
+}
+
+a {
+  padding-top: 8px;
 }
 
 a:hover, button:hover {
