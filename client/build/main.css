@@ -124,9 +124,9 @@ td {
 
 #modal-dialog {
   position: fixed;
-  width: calc(100vw - 350px);
+  width: calc(100vw - 500px);
   z-index: 1;
-  margin: 100px 175px;
+  margin: 100px 250px;
   border: 5px solid dodgerblue;
   border-radius: 10px;
   background-color: white;
