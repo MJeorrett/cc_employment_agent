@@ -4,6 +4,10 @@ import TableRow from '../components/TableRow'
 
 class Table extends React.Component {
 
+  constructor() {
+    super()
+  }
+
   render() {
     const dataKeys = []
     const dataTitles = []
