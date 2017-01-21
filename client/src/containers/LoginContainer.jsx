@@ -37,7 +37,7 @@ class LoginContainer extends React.Component {
     XmlHttpHelper.post( url, payload, ( user ) => {
       console.log( "props:", this.props )
       this.props.onLogin( user )
-    }, true )
+    })
   }
 
   render() {

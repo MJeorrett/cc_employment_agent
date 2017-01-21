@@ -23,7 +23,7 @@ class EmployersContainer extends React.Component {
       this.setState({
         employersData: employers
       })
-    }, true)
+    })
   }
 
   handleEmployerSelected( employerData ) {

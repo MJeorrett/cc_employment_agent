@@ -24,7 +24,7 @@ class Main extends React.Component {
       } else {
         this.setCurrentUser( null )
       }
-    }, true )
+    })
   }
 
   setCurrentUser( user ) {

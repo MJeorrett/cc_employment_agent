@@ -1,10 +1,10 @@
 const XmlHttpHelper = {
 
-  get( url, onloadCallback, withCredentials ) {
+  get( url, onloadCallback ) {
     var req = new XMLHttpRequest()
     req.open( 'GET', url )
     req.setRequestHeader( 'Content-Type', 'application/json' )
-    if ( withCredentials ) req.withCredentials = true
+    req.withCredentials = true
     req.onload = () => {
       const dataObject = JSON.parse( req.responseText )
       if( req.status === 200 ) {
@@ -16,11 +16,11 @@ const XmlHttpHelper = {
     req.send( null )
   },
 
-  post( url, payload, onloadCallback, withCredentials ) {
+  post( url, payload, onloadCallback ) {
     var req = new XMLHttpRequest()
     req.open( 'POST', url )
     req.setRequestHeader( 'Content-Type', 'application/json' )
-    if ( withCredentials ) req.withCredentials = true
+    req.withCredentials = true
     req.onload = () => {
       const dataObject = JSON.parse( req.responseText )
       if( req.status === 201 ) {
