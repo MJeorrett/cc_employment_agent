@@ -2,8 +2,13 @@
   color: dodgerblue;
 }
 
-p {
+h2 {
+  font-size: 30px;
+}
+
+span, p {
   padding: 5px 0px;
+  color: #585858 !important
 }
 
 b {
@@ -117,6 +122,9 @@ nav span {
 
 #modal-dialog-close-button {
   border: 2px solid dodgerblue;
-  padding: 2px 5px;
-  border-radius: 3px;
+  padding: 3px 5px;
+}
+
+#modal-dialog-content {
+  padding: 10px;
 }

@@ -16,10 +16,10 @@ class ModalDialog extends React.Component {
       <div id="modal-dialog">
         <div id="modal-dialogue-title-bar">
           <h2>{ this.props.title }</h2>
-          <span
+          <div
             id="modal-dialog-close-button"
             onClick={ this.handleCloseClicked }
-          >X</span>
+          >X</div>
         </div>
         <div id="modal-dialog-content">
           { this.props.children }
