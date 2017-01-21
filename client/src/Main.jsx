@@ -32,7 +32,7 @@ class Main extends React.Component {
             <Link className="button" activeClassName="active-link" to="/employers">Employers</Link>
             <Link className="button" activeClassName="active-link" to="/jobs">Jobs</Link>
             <Link className="button" activeClassName="active-link" to="/students">Students</Link>
-            <span id="user-name">{ this.state.currentUser.email }</span>
+            <span id="user-name">{ this.state.currentUser.user_name }</span>
             <LogOutButton onLogOut={ this.setCurrentUser } />
           </nav>
           <div id="content-container">
