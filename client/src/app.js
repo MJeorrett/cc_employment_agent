@@ -6,6 +6,7 @@ import Main from './Main'
 import WelcomeContainer from './containers/WelcomeContainer'
 import EmployersContainer from './containers/EmployersContainer'
 import JobsContainer from './containers/JobsContainer'
+import JobAddEditContainer from './containers/JobAddEditContainer'
 import StudentsContainer from './containers/StudentsContainer'
 
 window.onload = () => {
@@ -17,6 +18,7 @@ window.onload = () => {
           <Route path="employers" component={ EmployersContainer } />
           <Route path="jobs" component={ JobsContainer } />
           <Route path="students" component={ StudentsContainer } />
+          <Route path="jobs/:id" component={ JobAddEditContainer } />
         </Route>
       </Router>
     </div>,
