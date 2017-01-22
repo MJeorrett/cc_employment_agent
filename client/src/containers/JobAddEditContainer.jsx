@@ -9,6 +9,7 @@ class JobAddEditContainer extends React.Component {
     this.state = {
       jobData: {}
     }
+    this.handleJobSpecSelected = this.handleJobSpecSelected.bind( this )
   }
 
   componentDidMount() {
@@ -18,6 +19,25 @@ class JobAddEditContainer extends React.Component {
         jobData: jobData
       })
     })
+  }
+
+  handleJobSpecSelected( ev ) {
+    const reader = new FileReader()
+    const file = ev.target.files[0]
+    const filePath = ev.target.value
+    const filename = filePath.substr( filePath.lastIndexOf( '\\' ) + 1 )
+    console.log( "filename:", filename );
+
+    reader.onload = ( upload ) => {
+      console.log( "upload:", upload );
+      const jobData = this.state.jobData
+      jobData.job_spec = upload.target.result
+      jobData.job_spec_filename = filename
+      this.setState({
+        jobData: jobData
+      })
+    }
+    reader.readAsDataURL( file );
   }
 
   render() {
@@ -35,7 +55,10 @@ class JobAddEditContainer extends React.Component {
         <label htmlFor="application-closing-date">Applcation Closing Date</label>
           <input id="application-closing-date" type="date" value={ this.state.jobData.application_closing_date } /><br />
         <label htmlFor="application-process">Application Process</label>
-          <input id="application-process" type="text" value={ this.state.jobData.application_process} />
+          <input id="application-process" type="text" value={ this.state.jobData.application_process} /><br />
+        <label htmlFor="job-spec">Job Spec</label>
+          <input id="job-spec" type="file" onChange={ this.handleJobSpecSelected } />
+          <a href={ this.state.jobData.job_spec } download={ this.state.jobData.job_spec_filename }>Download: { this.state.jobData.job_spec_filename }</a>
       </div>
     )
   }
