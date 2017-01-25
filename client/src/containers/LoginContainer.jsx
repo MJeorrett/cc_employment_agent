@@ -39,7 +39,7 @@ class LoginContainer extends React.Component {
     }
     XmlHttpHelper.post( url, payload, ( user ) => {
       this.props.setCurrentUser( user )
-    })
+    }, true )
   }
 
   render() {
@@ -70,7 +70,7 @@ const mapStateToProps = state => {
   email: state.user.email,
   password: state.user.password,
   url: state.config.url
-  } 
+  }
 }
 const mapDispatchToProps = dispatch => {
   return {

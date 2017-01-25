@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import XmlHttpHelper from '../helpers/XmlHttpHelper'
 
 import { setFieldOnJob } from '../redux/actions/jobs'
+import SlackButton from '../components/SlackButton'
 
 class JobAddEditContainer extends React.Component {
 
@@ -95,6 +96,7 @@ class JobAddEditContainer extends React.Component {
             >
               Download: { this.props.job.job_spec_filename }
             </a>
+            <SlackButton job={ this.props.job } />
         </div>
       )
     }
