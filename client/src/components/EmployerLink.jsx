@@ -7,6 +7,7 @@ import { setSelectedEmployerId } from '../redux/actions/employers'
 class EmployerLink extends React.Component {
 
   render() {
+    console.log(this.props.employer)
     const data = this.props.employer
     const style = {
       backgroundImage: `url(${data.company_logo_url})`

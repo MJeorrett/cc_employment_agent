@@ -11,7 +11,7 @@ import XmlHttpHelper from '../helpers/XmlHttpHelper'
 class EmployersContainer extends React.Component {
 
   componentDidMount() {
-    const url = "http://localhost:5000/api/employers"
+    const url = this.props.url + 'api/employers'
     XmlHttpHelper.get( url, ( employers ) => {
       this.props.setEmployers( employers )
     })
@@ -69,7 +69,8 @@ const mapStateToProps = state => {
   })
   return {
     employers: state.employers.employers,
-    selectedEmployer: selectedEmployer
+    selectedEmployer: selectedEmployer,
+    url: state.config.url
   }
 }
 const mapDispatchToProps = dispatch => {

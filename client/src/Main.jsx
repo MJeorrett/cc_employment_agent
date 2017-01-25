@@ -51,7 +51,7 @@ class Main extends React.Component {
       )
     }
     else {
-      content = <LoginContainer baseUrl={ this.state.baseUrl } />
+      content = <LoginContainer />
     }
 
     return (
