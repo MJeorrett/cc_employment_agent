@@ -16,11 +16,11 @@ const XmlHttpHelper = {
     req.send( null )
   },
 
-  post( url, payload, onloadCallback ) {
+  post( url, payload, onloadCallback, withCredentials ) {
     const req = new XMLHttpRequest()
     req.open( 'POST', url )
     req.setRequestHeader( 'Content-Type', 'application/json' )
-    req.withCredentials = true
+    if ( withCredentials ) req.withCredentials = true
     req.onload = () => {
       const dataObject = JSON.parse( req.responseText )
       if( req.status === 201 ) {
@@ -39,8 +39,8 @@ const XmlHttpHelper = {
     req.withCredentials = true
     req.onload = () => {
       if ( req.status === 204 ) {
-        console.log( "Signed out") 
-        onloadCallback( true ) 
+        console.log( "Signed out")
+        onloadCallback( true )
       } else {
         console.log( "Sign out failed with status", req.status )
         onloadCallback( false )
