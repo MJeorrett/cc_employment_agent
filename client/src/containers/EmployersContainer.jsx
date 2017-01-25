@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { setEmployers } from '../redux/actions/employers'
+import { setEmployers, setSelectedEmployerId } from '../redux/actions/employers'
 
 import EmployerLink from '../components/EmployerLink'
 import ModalDialog from './ModalDialog'
@@ -10,31 +10,10 @@ import XmlHttpHelper from '../helpers/XmlHttpHelper'
 
 class EmployersContainer extends React.Component {
 
-  constructor() {
-    super()
-    this.state = {
-      selectedEmployer: null
-    }
-    this.handleEmployerSelected = this.handleEmployerSelected.bind( this )
-    this.clearSelectedEmployer = this.clearSelectedEmployer.bind( this )
-  }
-
   componentDidMount() {
     const url = "http://localhost:5000/api/employers"
     XmlHttpHelper.get( url, ( employers ) => {
       this.props.setEmployers( employers )
-    })
-  }
-
-  handleEmployerSelected( employerData ) {
-    this.setState({
-      selectedEmployer: employerData
-    })
-  }
-
-  clearSelectedEmployer() {
-    this.setState({
-      selectedEmployer: null
     })
   }
 
@@ -44,8 +23,7 @@ class EmployersContainer extends React.Component {
       return (
         <EmployerLink
           key={ index }
-          employer_data={ employer_data }
-          onEmployerSelected={ this.handleEmployerSelected }
+          employer={ employer_data }
         />
       )
     })
@@ -66,12 +44,12 @@ class EmployersContainer extends React.Component {
     }
 
     let modal = ""
-    if ( this.state.selectedEmployer ) {
+    if ( this.props.selectedEmployer ) {
       modal = (
         <ModalDialog
-          title={ this.state.selectedEmployer.company_name }
-          onCloseClicked={ this.clearSelectedEmployer }>
-          <EmployerPreviewDetails employerData={ this.state.selectedEmployer } />
+          title={ this.props.selectedEmployer.company_name }
+          onCloseClicked={ () => this.props.setSelectedEmployerId(null) }>
+          <EmployerPreviewDetails employerData={ this.props.selectedEmployer } />
         </ModalDialog>
       )
     }
@@ -85,10 +63,19 @@ class EmployersContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => state
+const mapStateToProps = state => {
+  const selectedEmployer = state.employers.employers.find( (employer) => {
+    return employer.id === state.employers.selectedEmployerId
+  })
+  return {
+    employers: state.employers.employers,
+    selectedEmployer: selectedEmployer
+  }
+}
 const mapDispatchToProps = dispatch => {
   return {
-    setEmployers: employers => dispatch( setEmployers( employers ) )
+    setEmployers: employers => dispatch( setEmployers( employers ) ),
+    setSelectedEmployerId: id => dispatch( setSelectedEmployerId( id ) )
   }
 }
 
