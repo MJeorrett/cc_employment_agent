@@ -1,4 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { setEmployers } from '../redux/actions/employers'
 
 import EmployerLink from '../components/EmployerLink'
 import ModalDialog from './ModalDialog'
@@ -10,8 +13,7 @@ class EmployersContainer extends React.Component {
   constructor() {
     super()
     this.state = {
-      selectedEmployer: null,
-      employersData: []
+      selectedEmployer: null
     }
     this.handleEmployerSelected = this.handleEmployerSelected.bind( this )
     this.clearSelectedEmployer = this.clearSelectedEmployer.bind( this )
@@ -20,9 +22,7 @@ class EmployersContainer extends React.Component {
   componentDidMount() {
     const url = "http://localhost:5000/api/employers"
     XmlHttpHelper.get( url, ( employers ) => {
-      this.setState({
-        employersData: employers
-      })
+      this.props.setEmployers( employers )
     })
   }
 
@@ -40,7 +40,7 @@ class EmployersContainer extends React.Component {
 
   render() {
 
-    const all_employer_links = this.state.employersData.map( (employer_data, index) => {
+    const all_employer_links = this.props.employers.map( (employer_data, index) => {
       return (
         <EmployerLink
           key={ index }
@@ -83,7 +83,18 @@ class EmployersContainer extends React.Component {
       </div>
     )
   }
-
 }
+
+const mapStateToProps = state => state
+const mapDispatchToProps = dispatch => {
+  return {
+    setEmployers: employers => dispatch( setEmployers( employers ) )
+  }
+}
+
+EmployersContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EmployersContainer)
 
 export default EmployersContainer
