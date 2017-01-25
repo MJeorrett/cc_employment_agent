@@ -28,6 +28,8 @@ class LoginContainer extends React.Component {
   }
 
   handleLogInClicked() {
+    this.props.setUserEmail( "" )
+    this.props.setUserPassword( "" )
     const url = this.props.url + 'users/sign_in.json'
     const payload = {
       user: {
