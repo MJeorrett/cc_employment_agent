@@ -43,7 +43,6 @@ class JobAddEditContainer extends React.Component {
   render() {
     return (
       <div>
-        <h1>Job Add Edit</h1>
         <label htmlFor="company-name">Company Name</label>
           <input id="company-name" type="text" value={ this.state.jobData.company_name } /><br />
         <label htmlFor="job-title">Job Title</label>
