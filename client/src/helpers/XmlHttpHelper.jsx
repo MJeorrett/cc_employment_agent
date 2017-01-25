@@ -1,7 +1,7 @@
 const XmlHttpHelper = {
 
   get( url, onloadCallback ) {
-    var req = new XMLHttpRequest()
+    const req = new XMLHttpRequest()
     req.open( 'GET', url )
     req.setRequestHeader( 'Content-Type', 'application/json' )
     req.withCredentials = true
@@ -17,7 +17,7 @@ const XmlHttpHelper = {
   },
 
   post( url, payload, onloadCallback ) {
-    var req = new XMLHttpRequest()
+    const req = new XMLHttpRequest()
     req.open( 'POST', url )
     req.setRequestHeader( 'Content-Type', 'application/json' )
     req.withCredentials = true
