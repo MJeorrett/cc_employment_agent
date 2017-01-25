@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import XmlHttpHelper from '../helpers/XmlHttpHelper'
+
+import { setSelectedJob } from '../redux/actions/jobs'
 
 class JobAddEditContainer extends React.Component {
 
@@ -63,5 +66,17 @@ class JobAddEditContainer extends React.Component {
   }
 
 }
+
+const mapStateToProps = state => state.jobs
+const mapDispatchToProps = dispatch => {
+  return {
+    setSelectedJob: id => dispatch( setSelectedJob( id ) )
+  }
+}
+
+JobAddEditContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)( JobAddEditContainer )
 
 export default JobAddEditContainer

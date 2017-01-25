@@ -32,7 +32,7 @@ class JobsContainer extends React.Component {
 
 }
 
-const mapStateToProps = state => state
+const mapStateToProps = state => state.jobs
 const mapDispatchToProps = dispatch => {
   return {
     setJobs: jobs => dispatch( setJobs( jobs ) )

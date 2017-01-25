@@ -1,9 +1,20 @@
-import { SET_JOBS } from '../actions/jobs'
+import { SET_JOBS, SET_SELECTED_JOB } from '../actions/jobs'
 
-function jobs( state = [], action ) {
+const defaultState = {
+  jobs: [],
+  selectedJob: undefined
+}
+
+function jobs( state = defaultState, action ) {
   switch ( action.type ) {
     case SET_JOBS:
-      return action.jobs
+      return Object.assign( {}, state, {
+        jobs: action.jobs
+      })
+    case SET_SELECTED_JOB:
+      return Object.assign( {}, state, {
+        selectedJob: action.job
+      })
     default:
       return state
   }
