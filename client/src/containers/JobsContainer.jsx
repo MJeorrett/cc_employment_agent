@@ -8,7 +8,7 @@ import { setJobs } from '../redux/actions/jobs'
 class JobsContainer extends React.Component {
 
   componentDidMount() {
-    const url = 'http://localhost:5000/api/jobs'
+    const url = this.props.url + 'api/jobs'
     XmlHttpHelper.get( url, (jobsData) => {
       this.props.setJobs( jobsData )
     })
@@ -32,7 +32,12 @@ class JobsContainer extends React.Component {
 
 }
 
-const mapStateToProps = state => state.jobs
+const mapStateToProps = state => {
+  return {
+    jobs: state.jobs.jobs,
+    url: state.config.url
+  }
+}
 const mapDispatchToProps = dispatch => {
   return {
     setJobs: jobs => dispatch( setJobs( jobs ) )

@@ -28,11 +28,11 @@ class LoginContainer extends React.Component {
   }
 
   handleLogInClicked() {
-    const url = this.props.baseUrl + 'users/sign_in.json'
+    const url = this.props.url + 'users/sign_in.json'
     const payload = {
       user: {
-        email: this.state.email,
-        password: this.state.password
+        email: this.props.email,
+        password: this.props.password
       }
     }
     XmlHttpHelper.post( url, payload, ( user ) => {
@@ -63,7 +63,13 @@ class LoginContainer extends React.Component {
 
 }
 
-const mapStateToProps = state => state.user
+const mapStateToProps = state => {
+ return {
+  email: state.user.email,
+  password: state.user.password,
+  url: state.config.url
+  } 
+}
 const mapDispatchToProps = dispatch => {
   return {
     setCurrentUser: ( user ) => dispatch( setCurrentUser( user ) ),
