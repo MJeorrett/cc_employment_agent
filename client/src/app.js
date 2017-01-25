@@ -1,6 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+import current_user from './redux/reducers/user'
 
 import Main from './Main'
 import WelcomeContainer from './containers/WelcomeContainer'
@@ -9,18 +13,22 @@ import JobsContainer from './containers/JobsContainer'
 import JobAddEditContainer from './containers/JobAddEditContainer'
 import StudentsContainer from './containers/StudentsContainer'
 
+let store = createStore( current_user )
+
 window.onload = () => {
   ReactDOM.render(
     <div>
-      <Router history={ hashHistory }>
-        <Route path="/" component={ Main }>
-          <IndexRoute component={ WelcomeContainer } />
-          <Route path="employers" component={ EmployersContainer } />
-          <Route path="jobs" component={ JobsContainer } />
-          <Route path="students" component={ StudentsContainer } />
-          <Route path="jobs/:id" component={ JobAddEditContainer } />
-        </Route>
-      </Router>
+      <Provider store={ store }>
+        <Router history={ hashHistory }>
+          <Route path="/" component={ Main }>
+            <IndexRoute component={ WelcomeContainer } />
+            <Route path="employers" component={ EmployersContainer } />
+            <Route path="jobs" component={ JobsContainer } />
+            <Route path="students" component={ StudentsContainer } />
+            <Route path="jobs/:id" component={ JobAddEditContainer } />
+          </Route>
+        </Router>
+      </Provider>
     </div>,
     document.getElementById('app')
   );

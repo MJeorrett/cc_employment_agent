@@ -1,6 +1,9 @@
 import React from 'react'
 import XmlHttpHelper from '../helpers/XmlHttpHelper'
 
+import { connect } from 'react-redux'
+import { setCurrentUser, setUserEmail, setUserPassword } from '../redux/actions'
+
 class LoginContainer extends React.Component {
 
   constructor() {
@@ -15,15 +18,13 @@ class LoginContainer extends React.Component {
   }
 
   handleEmailChange( ev ) {
-    this.setState({
-      email: ev.target.value
-    })
+    const email = ev.target.value
+    this.props.setUserEmail( email )
   }
 
   handlePasswordChange( ev ) {
-    this.setState({
-      password: ev.target.value
-    })
+    const password = ev.target.value
+    this.props.setUserPassword( password )
   }
 
   handleLogInClicked() {
@@ -35,8 +36,7 @@ class LoginContainer extends React.Component {
       }
     }
     XmlHttpHelper.post( url, payload, ( user ) => {
-      console.log( "props:", this.props )
-      this.props.onLogin( user )
+      this.props.setCurrentUser( user )
     })
   }
 
@@ -47,13 +47,13 @@ class LoginContainer extends React.Component {
         <input
           type="text"
           onChange={ this.handleEmailChange }
-          value={ this.state.email }
+          value={ this.props.email }
           placeholder="Email"
         />
         <input
           type="password"
           onChange={ this.handlePasswordChange }
-          value={ this.state.password }
+          value={ this.props.password }
           placeholder="Password"
         />
         <button onClick={ this.handleLogInClicked }>Log In</button>
@@ -62,5 +62,19 @@ class LoginContainer extends React.Component {
   }
 
 }
+
+const mapStateToProps = state => state
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentUser: ( user ) => dispatch( setCurrentUser( user ) ),
+    setUserEmail: ( email ) => dispatch( setUserEmail( email ) ),
+    setUserPassword: ( password ) => dispatch( setUserPassword( password ) )
+  }
+}
+
+LoginContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginContainer)
 
 export default LoginContainer
