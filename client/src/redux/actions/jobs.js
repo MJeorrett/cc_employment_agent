@@ -1,6 +1,6 @@
 export const SET_JOBS = 'SET_JOBS'
 export const SET_SELECTED_JOB_ID = 'SET_SELECTED_JOB_ID'
-export const SET_JOB_SPEC_ON_JOB = 'SET_JOB_SPEC_ON_JOB'
+export const SET_FIELD_ON_JOB = 'SET_FIELD_ON_JOB'
 
 export function setJobs( jobs ) {
   return {
@@ -9,17 +9,11 @@ export function setJobs( jobs ) {
   }
 }
 
-export function setSelectedJobId( id ) {
+export function setFieldOnJob( field, newValue, jobId ) {
   return {
-    type: SET_SELECTED_JOB_ID,
-    id
-  }
-}
-
-export function setJobSpecOnJob( jobSpec, jobId ) {
-  return {
-    type: SET_JOB_SPEC_ON_JOB,
-    jobSpec,
+    type: SET_FIELD_ON_JOB,
+    field,
+    newValue,
     jobId
   }
 }

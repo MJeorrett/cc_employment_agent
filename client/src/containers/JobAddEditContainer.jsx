@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import XmlHttpHelper from '../helpers/XmlHttpHelper'
 
-import { setSelectedJobId, setJobSpecOnJob } from '../redux/actions/jobs'
+import { setSelectedJobId, setFieldOnJob } from '../redux/actions/jobs'
 
 class JobAddEditContainer extends React.Component {
 
@@ -27,7 +27,6 @@ class JobAddEditContainer extends React.Component {
   }
 
   render() {
-    console.log("rendering!");
     if ( this.props.job ) {
       return (
         <div>
@@ -57,12 +56,10 @@ class JobAddEditContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("ownProps:", ownProps);
-  console.log("jobs:", state.jobs.jobs);
+  console.log("state.jobs:", state.jobs);
   const theJob = state.jobs.jobs.find( job => {
     return job.id.toString() === ownProps.params.id
   })
-  console.log("theJob:", theJob);
   return { job: theJob }
 }
 const mapDispatchToProps = dispatch => {
@@ -71,7 +68,7 @@ const mapDispatchToProps = dispatch => {
       console.log("setting id to:", id );
       dispatch( setSelectedJobId( id ) )
     },
-    setJobSpecOnJob: (jobSpec, jobId) => dispatch( setJobSpecOnJob( jobSpec, jobId ) )
+    setJobSpecOnJob: (jobSpec, jobId) => dispatch( setFieldOnJob( 'job_spec', jobSpec, jobId ) )
   }
 }
 
