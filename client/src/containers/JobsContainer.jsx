@@ -1,4 +1,5 @@
 import React from 'react'
+import XmlHttpHelper from '../helpers/XmlHttpHelper'
 
 import Table from './Table'
 
@@ -7,7 +8,7 @@ class JobsContainer extends React.Component {
   constructor() {
     super()
     this.state = {
-      jobsData = []
+      jobsData: []
     }
   }
 
