@@ -3,7 +3,7 @@ import XmlHttpHelper from '../helpers/XmlHttpHelper'
 import { connect } from 'react-redux'
 
 import Table from './Table'
-import { setJobs } from   '../redux/actions'
+import { setJobs } from '../redux/actions/jobs'
 
 class JobsContainer extends React.Component {
 

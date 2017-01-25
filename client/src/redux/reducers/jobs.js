@@ -1,4 +1,4 @@
-import { SET_JOBS } from '../actions'
+import { SET_JOBS } from '../actions/jobs'
 
 function jobs( state = [], action ) {
   switch ( action.type ) {

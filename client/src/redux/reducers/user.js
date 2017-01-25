@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, SET_USER_EMAIL, SET_USER_PASSWORD } from '../actions'
+import { SET_CURRENT_USER, SET_USER_EMAIL, SET_USER_PASSWORD } from '../actions/user'
 
 const defaultUserState = {
   currentUser: undefined,

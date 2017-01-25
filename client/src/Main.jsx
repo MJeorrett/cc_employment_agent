@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
-import { setCurrentUser } from './redux/actions'
+import { setCurrentUser } from './redux/actions/user'
 
 import LoginContainer from './containers/LoginContainer'
 import LogOutButton from './components/LogOutButton'

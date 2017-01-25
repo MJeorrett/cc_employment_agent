@@ -2,7 +2,7 @@ import React from 'react'
 import XmlHttpHelper from '../helpers/XmlHttpHelper'
 
 import { connect } from 'react-redux'
-import { setCurrentUser, setUserEmail, setUserPassword } from '../redux/actions'
+import { setCurrentUser, setUserEmail, setUserPassword } from '../redux/actions/user'
 
 class LoginContainer extends React.Component {
 

@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-import main_reducer from './redux/reducers/main_reducer'
+import ccEmployerAgent from './redux/reducers/ccEmployerAgent'
 
 import Main from './Main'
 import WelcomeContainer from './containers/WelcomeContainer'
@@ -13,7 +13,7 @@ import JobsContainer from './containers/JobsContainer'
 import JobAddEditContainer from './containers/JobAddEditContainer'
 import StudentsContainer from './containers/StudentsContainer'
 
-let store = createStore( main_reducer )
+let store = createStore( ccEmployerAgent )
 
 window.onload = () => {
   ReactDOM.render(
