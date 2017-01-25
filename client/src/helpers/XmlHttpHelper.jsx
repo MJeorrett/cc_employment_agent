@@ -39,10 +39,11 @@ const XmlHttpHelper = {
     req.withCredentials = true
     req.onload = () => {
       if ( req.status === 204 ) {
-        onloadCallback() 
         console.log( "Signed out") 
+        onloadCallback( true ) 
       } else {
         console.log( "Sign out failed with status", req.status )
+        onloadCallback( false )
       }
     }
     req.send( null )
