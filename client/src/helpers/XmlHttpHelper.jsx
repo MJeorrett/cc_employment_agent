@@ -30,6 +30,22 @@ const XmlHttpHelper = {
       }
     }
     req.send( JSON.stringify( payload ) )
+  },
+
+  delete( url, onloadCallback) {
+    const req = new XMLHttpRequest()
+    req.open( 'DELETE', url )
+    req.setRequestHeader( 'Content-Type', 'application/json' )
+    req.withCredentials = true
+    req.onload = () => {
+      if ( req.status === 204 ) {
+        onloadCallback() 
+        console.log( "Signed out") 
+      } else {
+        console.log( "Sign out failed with status", req.status )
+      }
+    }
+    req.send( null )
   }
 }
 
