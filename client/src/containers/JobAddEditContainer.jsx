@@ -3,13 +3,18 @@ import { connect } from 'react-redux'
 
 import XmlHttpHelper from '../helpers/XmlHttpHelper'
 
-import { setSelectedJobId, setFieldOnJob } from '../redux/actions/jobs'
+import { setFieldOnJob } from '../redux/actions/jobs'
 
 class JobAddEditContainer extends React.Component {
 
   constructor() {
     super()
+    this.handleInputChange = this.handleInputChange.bind( this )
     this.handleJobSpecSelected = this.handleJobSpecSelected.bind( this )
+  }
+
+  handleInputChange( ev ) {
+    this.props.setFieldOnJob( ev.target.id, ev.target.value, parseInt(this.props.params.id) )
   }
 
   handleJobSpecSelected( ev ) {
@@ -30,21 +35,66 @@ class JobAddEditContainer extends React.Component {
     if ( this.props.job ) {
       return (
         <div>
-          <label htmlFor="company-name">Company Name</label>
-            <input id="company-name" type="text" value={ this.props.job.company_name } /><br />
-          <label htmlFor="job-title">Job Title</label>
-            <input id="job-title" type="text" value={ this.props.job.job_title } /><br />
-          <label htmlFor="salary-range-min">Salary Range Min</label>
-            <input id="salary-range-min" type="number" min="0" max="1000000" step="1" value={ this.props.job.salary_range_min } /><br />
-          <label htmlFor="salary-range-max">Salary Range Max</label>
-            <input id="salary-range-max" type="number" min="0" max="1000000" step="1" value={ this.props.job.salary_range_max } /><br />
-          <label htmlFor="application-closing-date">Applcation Closing Date</label>
-            <input id="application-closing-date" type="date" value={ this.props.job.application_closing_date } /><br />
-          <label htmlFor="application-process">Application Process</label>
-            <input id="application-process" type="text" value={ this.props.job.application_process} /><br />
-          <label htmlFor="job-spec">Job Spec</label>
-            <input id="job-spec" type="file" onChange={ this.handleJobSpecSelected } />
-            <a href={ this.props.job.job_spec } download={ this.props.job.job_spec_filename }>Download: { this.props.job.job_spec_filename }</a>
+          <label htmlFor="company_name">Company Name</label>
+            <input
+              id="company_name"
+              type="text"
+              value={ this.props.job.company_name }
+              onChange={ this.handleInputChange }
+            /><br />
+          <label htmlFor="job_title">Job Title</label>
+            <input
+              id="job_title"
+              type="text"
+              value={ this.props.job.job_title }
+              onChange={ this.handleInputChange }
+            /><br />
+          <label htmlFor="salary_range_min">Salary Range Min</label>
+            <input
+              id="salary_range_min"
+              type="number"
+              min="0"
+              max="1000000"
+              step="1"
+              value={ this.props.job.salary_range_min }
+              onChange={ this.handleInputChange }
+            /><br />
+          <label htmlFor="salary_range_max">Salary Range Max</label>
+            <input
+              id="salary_range_max"
+              type="number"
+              min="0"
+              max="1000000"
+              step="1"
+              value={ this.props.job.salary_range_max }
+              onChange={ this.handleInputChange }
+            /><br />
+          <label htmlFor="application_closing_date">Applcation Closing Date</label>
+            <input
+              id="application_closing_date"
+              type="date"
+              value={ this.props.job.application_closing_date }
+              onChange={ this.handleInputChange }
+            /><br />
+          <label htmlFor="application_process">Application Process</label>
+            <input
+              id="application_process"
+              type="text"
+              value={ this.props.job.application_process}
+              onChange={ this.handleInputChange }
+            /><br />
+          <label htmlFor="job_spec">Job Spec</label>
+            <input
+              id="job_spec"
+              type="file"
+              onChange={ this.handleJobSpecSelected }
+            />
+            <a
+              href={ this.props.job.job_spec }
+              download={ this.props.job.job_spec_filename }
+            >
+              Download: { this.props.job.job_spec_filename }
+            </a>
         </div>
       )
     }
@@ -56,7 +106,6 @@ class JobAddEditContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("state.jobs:", state.jobs);
   const theJob = state.jobs.jobs.find( job => {
     return job.id.toString() === ownProps.params.id
   })
@@ -64,11 +113,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    setSelectedJobId: id => {
-      console.log("setting id to:", id );
-      dispatch( setSelectedJobId( id ) )
-    },
-    setJobSpecOnJob: (jobSpec, jobId) => dispatch( setFieldOnJob( 'job_spec', jobSpec, jobId ) )
+    setFieldOnJob: (field, newValue, jobId) => dispatch( setFieldOnJob( field, newValue, jobId ) )
   }
 }
 
