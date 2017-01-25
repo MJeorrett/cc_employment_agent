@@ -22,7 +22,6 @@ class Main extends React.Component {
     const url = this.state.baseUrl + 'users.json'
     XmlHttpHelper.get( url, (user, status) => {
       if ( status === 200 ) {
-        console.log("found user");
         this.props.setCurrentUser( user )
       } else {
         this.props.setCurrentUser( null )
@@ -31,7 +30,6 @@ class Main extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     let content = null
 
     if ( this.props.currentUser ) {
@@ -65,11 +63,10 @@ class Main extends React.Component {
 
 }
 
-const mapStateToProps = state => state
+const mapStateToProps = state => state.user
 const mapDispatchToProps = dispatch => {
   return {
     setCurrentUser: ( user ) => {
-      console.log("user:", user );
       return dispatch( setCurrentUser( user ) )
     }
   }

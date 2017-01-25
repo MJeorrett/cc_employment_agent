@@ -6,7 +6,7 @@ const defaultUserState = {
   password: "",
 }
 
-function current_user( state = defaultUserState, action ) {
+function user( state = defaultUserState, action ) {
   switch ( action.type ) {
     case SET_CURRENT_USER:
       return Object.assign( {}, state, {
@@ -25,4 +25,4 @@ function current_user( state = defaultUserState, action ) {
   }
 }
 
-export default current_user
+export default user

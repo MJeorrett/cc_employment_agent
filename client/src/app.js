@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-import current_user from './redux/reducers/user'
+import main_reducer from './redux/reducers/main_reducer'
 
 import Main from './Main'
 import WelcomeContainer from './containers/WelcomeContainer'
@@ -13,7 +13,7 @@ import JobsContainer from './containers/JobsContainer'
 import JobAddEditContainer from './containers/JobAddEditContainer'
 import StudentsContainer from './containers/StudentsContainer'
 
-let store = createStore( current_user )
+let store = createStore( main_reducer )
 
 window.onload = () => {
   ReactDOM.render(
