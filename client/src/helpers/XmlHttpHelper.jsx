@@ -32,6 +32,22 @@ const XmlHttpHelper = {
     req.send( JSON.stringify( payload ) )
   },
 
+  put( url, payload, onloadCallback, withCredentials ) {
+    const req = new XMLHttpRequest()
+    req.open( 'PUT', url )
+    req.setRequestHeader( 'Content-Type', 'application/json' )
+    req.withCredentials = true
+    req.onload = () => {
+      const dataObject = JSON.parse( req.responseText )
+      if( req.status === 200 ) {
+        if ( onloadCallback ) onloadCallback( dataObject )
+      } else {
+        console.log( "Error GET from:", url, ", failed with status: ", req.status, "/n", dataObject );
+      }
+    }
+    req.send( JSON.stringify( payload ) )
+  },
+
   delete( url, onloadCallback) {
     const req = new XMLHttpRequest()
     req.open( 'DELETE', url )

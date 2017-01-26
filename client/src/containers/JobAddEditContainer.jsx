@@ -12,6 +12,7 @@ class JobAddEditContainer extends React.Component {
     super()
     this.handleInputChange = this.handleInputChange.bind( this )
     this.handleJobSpecSelected = this.handleJobSpecSelected.bind( this )
+    this.persistJob = this.persistJob.bind( this )
   }
 
   handleInputChange( ev ) {
@@ -29,6 +30,13 @@ class JobAddEditContainer extends React.Component {
       this.props.setFieldOnJob( 'job_spec', upload.target.result, this.props.job.id )
     }
     reader.readAsDataURL( file );
+  }
+
+  persistJob() {
+
+    XmlHttpHelper.put( this.props.url, this.props.job, ( responseObj ) => {
+      console.log("responseObj:", responseObj);
+    }, true)
   }
 
   render() {
@@ -83,6 +91,7 @@ class JobAddEditContainer extends React.Component {
               value={ this.props.job.application_process}
               onChange={ this.handleInputChange }
             /><br />
+          <p>{ this.props.job.slack_data ? this.props.job.slack_data.toString : "" }</p>
           <label htmlFor="job_spec">Job Spec</label>
             <input
               id="job_spec"
@@ -96,6 +105,8 @@ class JobAddEditContainer extends React.Component {
               Download: { this.props.job.job_spec_filename }
             </a>
             <SlackButton job={ this.props.job } />
+            <hr />
+            <button onClick={ this.persistJob }>Save</button>
         </div>
       )
     }
@@ -110,7 +121,10 @@ const mapStateToProps = (state, ownProps) => {
   const theJob = state.jobs.jobs.find( job => {
     return job.id.toString() === ownProps.params.id
   })
-  return { job: theJob }
+  return {
+    job: theJob,
+    url: state.config.url + 'api/jobs/' + ownProps.params.id
+  }
 }
 const mapDispatchToProps = dispatch => {
   return {

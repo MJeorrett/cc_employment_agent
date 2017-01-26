@@ -9,6 +9,7 @@ export function setJobs( jobs ) {
 }
 
 export function setFieldOnJob( field, newValue, jobId ) {
+  console.log(`field:${field}, newValue:${newValue}, jobId:${jobId}`);
   return {
     type: SET_FIELD_ON_JOB,
     field,

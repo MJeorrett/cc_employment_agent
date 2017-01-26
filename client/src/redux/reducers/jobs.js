@@ -23,6 +23,8 @@ function jobs( state = defaultState, action ) {
         jobs: action.jobs
       })
     case SET_FIELD_ON_JOB:
+
+      console.log("action:", action);
       return {
         jobs: updateJobField( state.jobs, action.jobId, action.field, action.newValue ),
         selectedJobId: state.selectedJobId
