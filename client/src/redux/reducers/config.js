@@ -1,6 +1,5 @@
 const defaultState = {
-  // url: 'https://secret-stream-18203.herokuapp.com/',
-  url: 'http://localhost:5000/'
+  url: 'https://secret-stream-18203.herokuapp.com/'
 }
 
 function config() {
