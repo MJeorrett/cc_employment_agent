@@ -10,16 +10,8 @@ import XmlHttpHelper from './helpers/XmlHttpHelper'
 
 class Main extends React.Component {
 
-  constructor() {
-    super()
-    this.state = {
-      currentUser: null,
-      baseUrl: "http://localhost:5000/"
-    }
-  }
-
   componentDidMount() {
-    const url = this.state.baseUrl + 'users.json'
+    const url = this.props.url + 'users.json'
     XmlHttpHelper.get( url, (user, status) => {
       if ( status === 200 ) {
         this.props.setCurrentUser( user )
@@ -63,7 +55,12 @@ class Main extends React.Component {
 
 }
 
-const mapStateToProps = state => state.user
+const mapStateToProps = state => {
+  return {
+    currentUser: state.user.currentUser,
+    url: state.config.url
+  }
+}
 const mapDispatchToProps = dispatch => {
   return {
     setCurrentUser: ( user ) => {
