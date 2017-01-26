@@ -26,8 +26,7 @@ class JobAddEditContainer extends React.Component {
     // console.log( "filename:", filename );
 
     reader.onload = ( upload ) => {
-      console.log( "upload:", upload );
-      this.props.setJobSpecOnJob( upload.target.result, this.props.job.id )
+      this.props.setFieldOnJob( 'job_spec', upload.target.result, this.props.job.id )
     }
     reader.readAsDataURL( file );
   }
